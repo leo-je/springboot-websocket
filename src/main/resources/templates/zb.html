@@ -1,0 +1,32 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hello queue</title>
+<script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+	<img id="receiver" style="width: 160px; height: 90px" />
+</body>
+<script type="text/javascript" charset="utf-8">
+
+	//创建一个socket实例
+
+	var receiver_socket = new WebSocket("ws://localhost:8888/websocket");
+
+	alert("ws://" + document.domain + ":8008")
+
+	var image = document.getElementById('receiver');
+
+	// 监听消息
+
+	receiver_socket.onmessage = function(data) {
+
+		image.src = data.data;
+
+	}
+</script>
+</html>
